@@ -1,0 +1,44 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block title %}Beneficios{% endblock %}
+
+{% block body %}
+    {% if items %}
+        <a href="{{ path('admin_items_new') }}" class="button is-text">Crear un nuevo beneficio</a>
+
+        <table class="table is-fullwidth">
+            <col width="90%">
+            <col width="5%">
+            <col width="5%">
+
+            <thead>
+                <tr>
+                    <th>Beneficios</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('admin_items_show', { 'id': item.id }) }}">
+                                {{ item.name }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_items_show', { 'id': item.id }) }}">Mostrar</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_items_edit', { 'id': item.id }) }}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="notification">
+            Sin datos que mostrar. <a href="{{ path('admin_items_new') }}">Crear un nuevo beneficio</a>
+        </div>
+    {% endif %}
+{% endblock %}

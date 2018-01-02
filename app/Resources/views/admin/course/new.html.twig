@@ -1,0 +1,199 @@
+{% extends 'admin/twoColumnsMaster.html.twig' %}
+
+{% block title %}Crear curso{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="field">
+            {{ form_label(form.name, 'Nombre', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.name) }}
+
+                {{ form_widget(form.name, { 'attr': { 'class': 'input' } }) }}
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.startDate, 'Fecha de inicio', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.startDate) }}
+
+                        {{ form_widget(form.startDate, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.closingDate, 'Fecha de clausura', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.closingDate) }}
+
+                        {{ form_widget(form.closingDate, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.startsAt, 'Hora de inicio', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.startsAt) }}
+
+                        {{ form_widget(form.startsAt, { 'attr': { 'class': 'select' } }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.endsAt, 'Hora de salida', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.endsAt) }}
+
+                        {{ form_widget(form.endsAt, { 'attr': { 'class': 'select' } }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.cost, 'Costo', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.cost) }}
+
+                        {{ form_widget(form.cost, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.registrationFee, 'Precio de inscripcion', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.registrationFee) }}
+
+                        {{ form_widget(form.registrationFee, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.modality, 'Modalidad', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.modality) }}
+
+                        {{ form_widget(form.modality, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.type, 'Tipo de curso', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.type) }}
+
+                        {{ form_widget(form.type, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            {{ form_label(form.objetive, 'Objetivo', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.objetive) }}
+
+                {{ form_widget(form.objetive, { 'attr': { 'class': 'textarea' } }) }}
+            </div>
+        </div>
+
+        <div class="field">
+            {{ form_label(form.addressedTo, 'Dirigido a', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.addressedTo) }}
+
+                {{ form_widget(form.addressedTo, { 'attr': { 'class': 'textarea' } }) }}
+            </div>
+        </div>
+
+        <div class="field">
+            {{ form_label(form.result, 'Resultados', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.result) }}
+
+                {{ form_widget(form.result, { 'attr': { 'class': 'textarea' } }) }}
+            </div>
+        </div>
+
+        <div class="field">
+            {{ form_label(form.requirements, 'Requerimientos', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.requirements) }}
+
+                {{ form_widget(form.requirements, { 'attr': { 'class': 'textarea' } }) }}
+            </div>
+        </div>
+
+        <div class="field">
+            <input type="submit" value="Crear" class="button is-primary"/>
+
+            <a href="{{ path('admin_courses_index') }}" class="button is-text">Ir a lista</a>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block sidebar %}
+    <div class="field">
+        {{ form_errors(form.facilitators) }}
+
+        <div class="control">
+            {{ form_label(form.facilitators, 'Facilitadores', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="field">
+                {{ form_errors(form.facilitators) }}
+
+                {{ form_widget(form.facilitators, { 'attr': { 'class': 'input' } }) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        {{ form_errors(form.items) }}
+
+        <div class="control">
+            {{ form_label(form.items, 'Beneficios', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="field">
+                {{ form_errors(form.items) }}
+
+                {{ form_widget(form.items, { 'attr': { 'class': 'input' } }) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

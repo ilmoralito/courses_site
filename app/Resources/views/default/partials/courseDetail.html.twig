@@ -1,0 +1,61 @@
+<div class="buttons is-centered">
+    <a href="#" id="trigger" class="button is-text">Comparte</a>
+    <a href="{{ path('contact_index') }}" class="button is-text">Contactanos</a>
+</div>
+
+<div class="box">
+    <table class="table">
+        <col width="5%">
+        <col width="10%">
+        <col width="95%">
+
+        <tbody>
+            <tr>
+                <td class="has-text-centered">!</td>
+                <td>Duracion</td>
+                <td>{{ course['duration'] }}</td>
+            </tr>
+
+            <tr>
+                <td class="has-text-centered">!</td>
+                <td>Modalidad</td>
+                <td>{{ course['modality'] }}</td>
+            </tr>
+
+            <tr>
+                <td class="has-text-centered">$</td>
+                <td>Precio</td>
+                <td>{{ course['price'] }}</td>
+            </tr>
+
+            <tr>
+                <td class="has-text-centered">$</td>
+                <td>Inscripcion</td>
+                <td>{{ course['registrationPrice'] }}</td>
+            </tr>
+
+            <tr>
+                <td class="has-text-centered">T</td>
+                <td>Inicio</td>
+                <td>{{ course['startDate'] }}</td>
+            </tr>
+
+            <tr>
+                <td class="has-text-centered">^</td>
+                <td>Clausura</td>
+                <td>{{ course['closingDate'] }}</td>
+            </tr>
+
+            <tr>
+                <td class="has-text-centered">~</td>
+                <td>Horario</td>
+                <td>{{ course['schedule'] }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="content">
+        <p class="is-size-5">Requisitos</p>
+        <p class="is-size-7">{{ course['requirements'] }}</p>
+    </div>
+</div>

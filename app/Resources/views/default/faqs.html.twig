@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Preguntas comunes{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {
+            const trigger = document.querySelector('#trigger');
+            const modal = document.querySelector('#modal');
+            const close = document.querySelector('.delete');
+            const background = document.querySelector('.modal-background');
+
+            trigger.addEventListener('click', showModal);
+
+            window.addEventListener('keydown', checkKeyCode);
+
+            close.addEventListener('click', closeModal);
+
+            background.addEventListener('click', closeModal);
+
+
+            function checkKeyCode(e) {
+                if (e.keyCode === 27) closeModal();
+            }
+
+            function closeModal() {
+                modal.classList.remove('is-active');
+            }
+
+            function showModal(e) {
+                e.preventDefault();
+
+                modal.classList.add('is-active');
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    {{ include('default/partials/courseHeader.html.twig') }}
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-9">
+                    <div class="content">
+                        <p class="is-size-5">Preguntas comunes</p>
+
+                        {% for faq in faqs %}
+                            <details style="margin-bottom: 10px;" open>
+                                <summary style="margin: 10px 0;">{{ faq['question'] }}</summary>
+                                <p class="is-size-7">{{ faq['answer'] }}</p>
+                            </details>
+                        {% endfor %}
+                    </div>
+
+                    <div class="notification has-text-centered">
+                        ¿No aparece una respuesta a tu pregunta? <a href="{{ path('contact_index') }}" class="is-text">Contactanos!</a>
+                    </div>
+                </div>
+
+                <div class="column">
+                    {{ include('default/partials/courseDetail.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('default/partials/modal.html.twig') }}
+{% endblock %}

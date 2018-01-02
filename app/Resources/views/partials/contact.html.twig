@@ -1,0 +1,20 @@
+<div class="box">
+    <p>{{ location['place'] }}</p>
+    <p class="is-size-7">{{ location['address'] }}</p>
+
+    <ul style="margin-top: 10px;">
+        {% for telephoneNumber in location['telephoneNumbers'] %}
+            <li class="is-size-7">{{ telephoneNumber }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="box">
+    {% for contact in contactList %}
+        <div style="margin: 5px 0;">
+            <p>{{ contact['name'] }}</p>
+            <a href="mailto:{{ contact['email'] }}" class="is-size-7">{{ contact['email'] }}</a>
+            <p class="is-size-7">{{ contact['telephoneNumber'] }}</p>
+        </div>
+    {% endfor %}
+</div>

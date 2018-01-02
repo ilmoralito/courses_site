@@ -1,0 +1,39 @@
+{% extends 'simple.html.twig' %}
+
+{% block title %}Iniciar sesion{% endblock %}
+
+{% block body %}
+    <div class="columns">
+        <div class="column is-4 is-offset-4">
+            <h1 class="subtitle has-text-centered">Identificate</h1>
+
+            {% if error %}
+                <div class="notification">{{ error.getMessage }}</div>
+            {% endif %}
+
+            <form action="{{ path('login') }}" method="post" autocomplete="off">
+                <div class="field">
+                    <label for="_username" class="label">Nombre de usuario</label>
+
+                    <div class="control">
+                        <input name="_username" id="username" class="input" value="{{ last_username }}">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="_password" class="label">Clave</label>
+
+                    <div class="control">
+                        <input type="password" name="_password" id="username" class="input">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Autenticarse</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

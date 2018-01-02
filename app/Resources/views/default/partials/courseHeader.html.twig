@@ -1,0 +1,32 @@
+<section class="hero is-info">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">{{ course['name'] }}</h1>
+            <h2 class="subtitle">{{ course['slogan'] }}</h2>
+        </div>
+    </div>
+
+    <div class="hero-foot">
+        <div class="tabs is-boxed is-centered">
+            <div class="container">
+                <ul>
+                    <li class="{{ app.request.attributes.get('_route') == 'show_course' ? 'is-active' : '' }}">
+                        <a href="{{ path('show_course', {'slug': course['slug']}) }}">Curso</a>
+                    </li>
+
+                    <li class="{{ app.request.attributes.get('_route') == 'show_course_faqs' ? 'is-active' : '' }}">
+                        <a href="{{ path('show_course_faqs', {'slug': course['slug']}) }}">Preguntas frequentes</a>
+                    </li>
+
+                    <li class="{{ app.request.attributes.get('_route') == 'show_course_instructors' ? 'is-active' : '' }}">
+                        <a href="{{ path('show_course_instructors', {'slug': course['slug']}) }}">Instructores</a>
+                    </li>
+
+                    <li class="{{ app.request.attributes.get('_route') == 'show_course_thematics' ? 'is-active' : '' }}">
+                        <a href="{{ path('show_course_thematics', {'slug': course['slug']}) }}">Tematica</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}{% endblock %}
+
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {{ include('partials/navbar.html.twig') }}
+
+        {% block body %}{% endblock %}
+
+        {{ include('partials/footer.html.twig') }}
+
+        <script src="{{ asset('build/app.js') }}"></script>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

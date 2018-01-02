@@ -1,0 +1,25 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block title %}Crear beneficio{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'attr': { 'autocomplete': 'off' } }) }}
+        {{ form_errors(form) }}
+
+        <div class="field">
+            {{ form_label(form.name, 'Nombre', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.name) }}
+
+                {{ form_widget(form.name, { 'attr': { 'class': 'input' } }) }}
+            </div>
+        </div>
+
+        <div class="buttons">
+            <input type="submit" value="Crear" class="button is-primary"/>
+
+            <a href="{{ path('admin_items_index') }}" class="button is-text">Ir a la lista</a>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

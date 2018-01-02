@@ -1,0 +1,63 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block title %}Crear facilitador{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'attr': { 'autocomplete': 'off' } }) }}
+        {{ form_errors(form) }}
+
+        <div class="field">
+            {{ form_label(form.name, 'Nombre y apellido', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.name) }}
+
+                {{ form_widget(form.name, { 'attr': { 'class': 'input' } }) }}
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.image, 'Imagen', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.image) }}
+
+                        {{ form_widget(form.image, { 'attr': { 'class': 'input', 'readonly': true } }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="field">
+                    {{ form_label(form.site, 'Sitio web', { 'label_attr': { 'class': 'label' } }) }}
+
+                    <div class="control">
+                        {{ form_errors(form.site) }}
+
+                        {{ form_widget(form.site, { 'attr': { 'class': 'input' } }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            {{ form_label(form.profile, 'Perfil', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(form.profile) }}
+
+                {{ form_widget(form.profile, { 'attr': { 'class': 'textarea' } }) }}
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="buttons">
+                <input type="submit" value="Crear" class="button is-primary"/>
+
+                <a href="{{ path('admin_facilitators_index') }}" class="button is-text">Ir a lista</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

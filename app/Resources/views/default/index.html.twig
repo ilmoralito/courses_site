@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cursos en UCC Leon{% endblock %}
+
+{% block body %}
+    <section class="hero is-medium is-link">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Avanza en tu profesion</h1>
+                <h2 class="subtitle">Aprendisaje cerca de ti</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #DDD;">
+        <div class="container">
+            <p class="is-size-5">Proximos cursos</p>
+
+            <div class="columns is-multiline">
+                {% for course in courseList %}
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="http://localhost:4000/images/placeholders/1280x960.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="title is-size-6">{{ course['name'] }}</p>
+                                    <p class="is-size-7">Fecha de apertura: {{ course['startDate'] }}</p>
+                                </div>
+                            </div>
+
+                            <footer class="card-footer">
+                                <a href="{{ path('show_course', {'slug': course['slug']}) }}" class="card-footer-item">Saber mas</a>
+                            </footer>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6">
+                    <p class="is-size-5">Estudiar en UCC</p>
+                </div>
+
+                <div class="column is-2">
+                    Contamos con 9 sala de conferenzias climatizadas y acceso a wifi.
+                    Contamos ademas con 4 laboratorios
+                </div>
+
+                <div class="column is-2">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+
+                <div class="column is-2">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

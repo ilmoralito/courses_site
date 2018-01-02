@@ -1,0 +1,41 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block title %}Lista de facilitadores{% endblock %}
+
+{% block body %}
+    {% if facilitators %}
+        <a href="{{ path('admin_facilitators_new') }}" class="button is-text">Crear un nuevo facilitador</a>
+
+        <table class="table is-fullwidth">
+            <col width="90%">
+            <col width="5%">
+            <col width="5%">
+
+            <thead>
+                <tr>
+                    <th>Facilitadores</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for facilitator in facilitators %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('admin_facilitators_show', { 'id': facilitator.id }) }}">
+                                {{ facilitator.name }}
+                            </a>
+                        </td>
+                        <td><a href="{{ path('admin_facilitators_show', { 'id': facilitator.id }) }}">Mostrar</a></td>
+                        <td><a href="{{ path('admin_facilitators_edit', { 'id': facilitator.id }) }}">Editar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="notification">
+            Sin datos que mostrar. <a href="{{ path('admin_facilitators_new') }}">Crear facilitador</a>
+        </div>
+    {% endif %}
+{% endblock %}

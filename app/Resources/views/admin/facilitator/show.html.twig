@@ -1,0 +1,66 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block title %}
+    {{ facilitator.name }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {
+            const trigger = document.querySelector('#delete_form');
+
+            trigger.addEventListener('submit', deleteObject);
+
+            function deleteObject(e) {
+                if (!confirm('¿Estas seguro?')) {
+                    e.preventDefault();
+
+                    return false
+                }
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <col width="25%">
+        <col width="75%">
+
+        <tbody>
+            <tr>
+                <th>Nombre y apellido</th>
+                <td>{{ facilitator.name }}</td>
+            </tr>
+
+            {% if facilitator.image %}
+                <tr>
+                    <th>Imagen</th>
+                    <td>{{ facilitator.image }}</td>
+                </tr>
+            {% endif %}
+
+            {% if facilitator.site %}
+                <tr>
+                    <th>Sitio</th>
+                    <td>{{ facilitator.site }}</td>
+                </tr>
+            {% endif %}
+
+            <tr>
+                <th>Perfil</th>
+                <td>{{ facilitator.profile }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="buttons">
+        <a href="{{ path('admin_facilitators_index') }}" class="button is-text">Ir a lista</a>
+
+        <a href="{{ path('admin_facilitators_edit', { 'id': facilitator.id }) }}" class="button is-text">Editar</a>
+
+        {{ form_start(delete_form, { 'attr': { 'id': 'delete_form' } }) }}
+            <input type="submit" value="Eliminar" class="button is-text">
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

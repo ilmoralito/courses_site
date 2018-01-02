@@ -1,0 +1,38 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block body %}
+    {% if courses %}
+        <a href="{{ path('admin_courses_new') }}" class="button is-text">Crear un nuevo curso</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Isenabled</th>
+                    <th>Type</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('admin_courses_show', { 'id': course.id }) }}">{{ course.name }}</a>
+                        </td>
+                        <td>{% if course.isEnabled %}Yes{% else %}No{% endif %}</td>
+                        <td>{{ course.type }}</td>
+                        <td>
+                            <a href="{{ path('admin_courses_show', { 'id': course.id }) }}">Mostrar</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_courses_edit', { 'id': course.id }) }}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="notification">Sin datos que mostrar. <a href="{{ path('admin_courses_new') }}">Crear un nuevo curso</a></div>
+    {% endif %}
+{% endblock %}

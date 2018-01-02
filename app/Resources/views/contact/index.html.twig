@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acerca de{% endblock %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-9">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <p class="subtitle" style="margin-top: 20px;">Preguntas comunes</p>
+
+                    {% for faq in faqs %}
+                        <details style="margin: 15px 0; cursor: pointer;">
+                            <summary>{{ faq['question'] }}</summary>
+                            <p class="is-size-7" style="margin-top: 10px;">{{ faq['answer'] }}</p>
+                        </details>
+                    {% endfor %}
+
+                    <div class="message" style="margin-top: 20px;">
+                        <div class="message-body">
+                            <p>¿No ves la respuesta a tu pregunta? Pregúntanos directamente.</p>
+
+                            <br>
+                            <a href="{{ path('contact_form') }}" class="button is-info">Ir al formulario de contacto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    {{ include('partials/contact.html.twig', { 'location': location, 'contactList': contactList }) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,26 @@
+<asside class="menu">
+    <p class="menu-label">Administrar</p>
+
+    <ul class="menu-list">
+        <li>
+            <a
+                href="{{ path("admin_facilitators_index") }}"
+                class="{{ app.request.attributes.get('_route') in ['admin_facilitators_index', 'admin_facilitators_new', 'admin_facilitators_show', 'admin_facilitators_edit'] ? 'is-active' : '' }}">Facilitadores</a>
+        </li>
+        <li>
+            <a
+                href="{{ path('admin_items_index') }}"
+                class="{{ app.request.attributes.get('_route') in ['admin_items_index', 'admin_items_new', 'admin_items_show', 'admin_items_edit'] ? 'is-active' : '' }}">Beneficios</a>
+        </li>
+    </ul>
+
+    <p class="menu-label">Cursos</p>
+
+    <ul class="menu-list">
+        <li>
+            <a
+                href="{{ path('admin_courses_index') }}"
+                class="{{ app.request.attributes.get('_route') in ['admin_courses_index', 'admin_courses_new'] ? 'is-active' : '' }}">Cursos</a>
+        </li>
+    </ul>
+</asside>

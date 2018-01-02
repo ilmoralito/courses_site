@@ -1,0 +1,27 @@
+{% extends 'admin/master.html.twig' %}
+
+{% block title %}
+    Editar {{ item.name }}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(edit_form, { 'attr': { 'autocomplete': 'off' } }) }}
+        {{ form_errors(edit_form) }}
+
+        <div class="field">
+            {{ form_label(edit_form.name, 'Nombre', { 'label_attr': { 'class': 'label' } }) }}
+
+            <div class="control">
+                {{ form_errors(edit_form.name) }}
+
+                {{ form_widget(edit_form.name, { 'attr': { 'class': 'input' } }) }}
+            </div>
+        </div>
+
+        <div class="buttons">
+            <input type="submit" value="Editar" class="button is-primary" />
+
+            <a href="{{ path('admin_items_index') }}" class="button is-text">Ir a lista</a>
+        </div>
+    {{ form_end(edit_form) }}
+{% endblock %}

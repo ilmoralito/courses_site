@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tematica{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {
+            const trigger = document.querySelector('#trigger');
+            const modal = document.querySelector('#modal');
+            const close = document.querySelector('.delete');
+            const background = document.querySelector('.modal-background');
+
+            trigger.addEventListener('click', showModal);
+
+            window.addEventListener('keydown', checkKeyCode);
+
+            close.addEventListener('click', closeModal);
+
+            background.addEventListener('click', closeModal);
+
+
+            function checkKeyCode(e) {
+                if (e.keyCode === 27) closeModal();
+            }
+
+            function closeModal() {
+                modal.classList.remove('is-active');
+            }
+
+            function showModal(e) {
+                e.preventDefault();
+
+                modal.classList.add('is-active');
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    {{ include('default/partials/courseHeader.html.twig') }}
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-9">
+                    <div class="content">
+                        <ol>
+                            {% for thematic in thematics %}
+                                <li>{{ thematic['unity'] }}</li>
+
+                                <ul>
+                                    {% for topic in thematic['topics'] %}
+                                        <li>{{ topic }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="column">
+                    {{ include('default/partials/courseDetail.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('default/partials/modal.html.twig') }}
+{% endblock %}
